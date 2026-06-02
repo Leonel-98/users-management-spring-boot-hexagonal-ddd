@@ -9,6 +9,15 @@ public final class PersistenceException extends RuntimeException {
   private static final String MESSAGE_ALL = "Failed to retrieve all users.";
   private static final String MESSAGE_DELETE = "Failed to delete user with ID: '%s'.";
   private static final String MESSAGE_CONNECTION = "Could not establish database connection.";
+  private static final String MESSAGE_SAVE_ESTUDIANTE =
+      "Failed to save estudiante with ID: '%s'.";
+  private static final String MESSAGE_UPDATE_ESTUDIANTE =
+      "Failed to update estudiante with ID: '%s'.";
+  private static final String MESSAGE_FIND_ESTUDIANTE =
+      "Failed to find estudiante with ID: '%s'.";
+  private static final String MESSAGE_ALL_ESTUDIANTES = "Failed to retrieve all estudiantes.";
+  private static final String MESSAGE_DELETE_ESTUDIANTE =
+      "Failed to delete estudiante with ID: '%s'.";
 
   private PersistenceException(final String message, final Throwable cause) {
     super(message, cause);
@@ -44,5 +53,31 @@ public final class PersistenceException extends RuntimeException {
 
   public static PersistenceException becauseConnectionFailed(final Throwable cause) {
     return new PersistenceException(MESSAGE_CONNECTION, cause);
+  }
+
+  public static PersistenceException becauseSaveEstudianteFailed(
+      final String estudianteId, final Throwable cause) {
+    return new PersistenceException(String.format(MESSAGE_SAVE_ESTUDIANTE, estudianteId), cause);
+  }
+
+  public static PersistenceException becauseUpdateEstudianteFailed(
+      final String estudianteId, final Throwable cause) {
+    return new PersistenceException(
+        String.format(MESSAGE_UPDATE_ESTUDIANTE, estudianteId), cause);
+  }
+
+  public static PersistenceException becauseFindEstudianteByIdFailed(
+      final String estudianteId, final Throwable cause) {
+    return new PersistenceException(String.format(MESSAGE_FIND_ESTUDIANTE, estudianteId), cause);
+  }
+
+  public static PersistenceException becauseFindAllEstudiantesFailed(final Throwable cause) {
+    return new PersistenceException(MESSAGE_ALL_ESTUDIANTES, cause);
+  }
+
+  public static PersistenceException becauseDeleteEstudianteFailed(
+      final String estudianteId, final Throwable cause) {
+    return new PersistenceException(
+        String.format(MESSAGE_DELETE_ESTUDIANTE, estudianteId), cause);
   }
 }

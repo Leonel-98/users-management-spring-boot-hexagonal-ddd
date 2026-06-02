@@ -1,0 +1,43 @@
+###
+POST http://localhost:8080/api/estudiantes
+Content-Type: application/json
+
+{
+  "nombre": "x",
+  "apellido": "x",
+  "fechaNacimiento": "2002-12-03",
+  "semestre": 2,
+  "email": "abc@abc.xyz",
+  "genero": "masculino",
+  "telefono": "5559438219",
+  "programa": "Ingeniería",
+  "universidad": "Universidad Cartagena"
+}
+
+###
+GET http://localhost:8080/api/estudiantes/{{id}}
+Content-Type: application/json
+
+###
+PUT http://localhost:8080/api/estudiantes/8f672517-f53c-4e03-8a05-b0fcfc7cf19f
+Content-Type: application/json
+
+{
+  "nombre": "x",
+  "apellido": "x",
+  "fechaNacimiento": "2002-12-03",
+  "semestre": 4,
+  "email": "abc@abc.xyz",
+  "genero": "masculino",
+  "telefono": "5559438219",
+  "programa": "Ingeniería",
+  "universidad": "Universidad Cartagena"
+}
+
+###
+DELETE http://localhost:8080/api/estudiantes/d3b11828-02aa-4e10-8ee0-cd8005cfece8
+Content-Type: application/json
+
+###
+GET http://localhost:8080/api/estudiantes
+Content-Type: application/json

@@ -1,6 +1,7 @@
 package com.jcaa.usersmanagement.infrastructure.entrypoint.rest.advice;
 
 import com.jcaa.usersmanagement.domain.exception.DomainException;
+import com.jcaa.usersmanagement.domain.exception.EstudianteNotFoundException;
 import com.jcaa.usersmanagement.domain.exception.InvalidCredentialsException;
 import com.jcaa.usersmanagement.domain.exception.UserAlreadyExistsException;
 import com.jcaa.usersmanagement.domain.exception.UserNotFoundException;
@@ -21,6 +22,12 @@ public class GlobalExceptionHandler {
   @ExceptionHandler(UserNotFoundException.class)
   @ResponseStatus(HttpStatus.NOT_FOUND)
   public ApiErrorResponse handleUserNotFound(final UserNotFoundException exception) {
+    return new ApiErrorResponse(HttpStatus.NOT_FOUND.value(), exception.getMessage());
+  }
+
+  @ExceptionHandler(EstudianteNotFoundException.class)
+  @ResponseStatus(HttpStatus.NOT_FOUND)
+  public ApiErrorResponse handleEstudianteNotFound(final EstudianteNotFoundException exception) {
     return new ApiErrorResponse(HttpStatus.NOT_FOUND.value(), exception.getMessage());
   }
 
@@ -74,7 +81,7 @@ public class GlobalExceptionHandler {
   @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
   public ApiErrorResponse handleGeneral(final Exception ignored) {
     return new ApiErrorResponse(
-        HttpStatus.INTERNAL_SERVER_ERROR.value(), "Error interno del servidor.");
+        HttpStatus.INTERNAL_SERVER_ERROR.value(), "Error interno del servidor. ");
   }
 }
 

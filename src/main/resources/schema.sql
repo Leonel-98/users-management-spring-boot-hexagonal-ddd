@@ -20,6 +20,21 @@ CREATE TABLE IF NOT EXISTS users (
     updated_at  DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+CREATE TABLE IF NOT EXISTS estudiante (
+    id                  VARCHAR(36) NOT NULL PRIMARY KEY,
+    nombre              VARCHAR(150) NOT NULL,
+    apellido            VARCHAR(150) NOT NULL,
+    fecha_nacimiento    DATE NOT NULL,
+    semestre            INT NOT NULL,
+    email               VARCHAR(150) NOT NULL,
+    genero              VARCHAR(50) NOT NULL,
+    telefono            VARCHAR(50) NOT NULL,
+    programa            VARCHAR(150) NOT NULL,
+    universidad         VARCHAR(150) NOT NULL,
+    created_at          DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at          DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 -- Usuario administrador inicial (password: Admin1234!)
 INSERT INTO users (id, name, email, password, role, status)
 VALUES (

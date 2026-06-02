@@ -1,0 +1,9 @@
+package com.jcaa.usersmanagement.application.port.in;
+
+import com.jcaa.usersmanagement.application.service.dto.query.GetEstudianteByIdQuery;
+import com.jcaa.usersmanagement.domain.model.EstudianteModel;
+
+public interface GetEstudianteUseCase {
+
+  EstudianteModel execute(GetEstudianteByIdQuery query);
+}
